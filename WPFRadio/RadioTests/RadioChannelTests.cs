@@ -20,22 +20,6 @@ namespace RadioTests
             return radio;
         }
 
-        private Radio _radioOff;
-        private Radio _radioOn;
-        private int _channel;
-
-        [SetUp]
-        public void Setup()
-        {
-            _radioOff = new Radio();
-            _radioOff.TurnOff();
-
-            _radioOn = new Radio();
-            _radioOn.TurnOn();
-
-            _channel = _radioOn.Channel;
-        }
-
         [Test]
         public void Channel_HasDefaultValueOf1()
         {
@@ -63,7 +47,7 @@ namespace RadioTests
 
             radio.Play();
 
-            Assert.AreEqual($"Playing channel {_channel}", radio.Play());
+            Assert.AreEqual("Playing channel 1", radio.Play());
         }
 
         [Test]
@@ -118,7 +102,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void _ChannelIsMaximumValue_ChannelIsSetToMinimumValue()
+        public void SwitchToNextChannel_ChannelIsMaximumValue_ChannelIsSetToMinimumValue()
         {
             var radio = CreateRadioOn();
 
