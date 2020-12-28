@@ -81,6 +81,17 @@ namespace RadioTests
         {
             var radio = CreateRadioOn();
 
+            radio.Channel = 2;
+            radio.SwitchToPreviousChannel();
+
+            Assert.AreEqual(1, radio.Channel);
+        }
+
+        [Test]
+        public void SwitchToPreviousChannel_ChannelIsMinimumValue_ChannelIsSetToMaximumValue()
+        {
+            var radio = CreateRadioOn();
+
             radio.SwitchToPreviousChannel();
 
             Assert.AreEqual(4, radio.Channel);
@@ -107,51 +118,46 @@ namespace RadioTests
         }
 
         [Test]
-        public void ChannelCanNotEscapeMinimumBoundaryValue()
+        public void _ChannelIsMaximumValue_ChannelIsSetToMinimumValue()
         {
-            _radioOn.SwitchToPreviousChannel();
+            var radio = CreateRadioOn();
 
-            Assert.AreEqual(4, _radioOn.Channel);
+            radio.Channel = 4;
+            radio.SwitchToNextChannel();
+
+            Assert.AreEqual(1, radio.Channel);
         }
 
         [Test]
-        public void ChannelCanNotEscapeMaximumBoundaryValue()
+        public void ToggleShuffle_RadioIsOff_ChannelCanNotChange()
         {
-            _radioOn.Channel = 4;
-            _radioOn.SwitchToNextChannel();
+            var radio = CreateRadioOff();
 
-            Assert.AreEqual(1, _radioOn.Channel);
+            radio.ToggleShuffle();
+
+            Assert.That(radio.Channel, Is.EqualTo(1));
         }
 
         [Test]
-        public void ShuffleCanOnlyChangeWhenRadioIsOn()
+        public void ToggleShuffle_RadioIsOn_ChannelChangesToAUniqueChannel()
         {
-            _radioOff.ToggleShuffle();
-            _radioOff.SwitchToNextChannel();
+            var radio = CreateRadioOn();
 
-            _radioOn.ToggleShuffle();
-            _radioOn.SwitchToNextChannel();
+            radio.ToggleShuffle();
+            radio.SwitchToNextChannel();
 
-            Assert.AreEqual(1, _radioOff.Channel);
-            Assert.AreNotEqual(1, _radioOn.Channel);
+            Assert.That(radio.Channel, Is.Not.EqualTo(1));
         }
 
         [Test]
-        public void ShuffleWillAlwaysSwitchToAUniqueChannel()
+        public void SwitchToChannel_RadioIsOnWithToggleShuffleOn_ChannelIsSwitchedToArgumentChannel()
         {
-            _radioOn.ToggleShuffle();
-            _radioOn.SwitchToNextChannel();
+            var radio = CreateRadioOn();
 
-            Assert.AreNotEqual(1, _radioOn.Channel);
-        }
+            radio.ToggleShuffle();
+            radio.SwitchToChannel(3);
 
-        [Test]
-        public void ShuffleDoesNotAffectDirectChannelSwitching()
-        {
-            _radioOn.ToggleShuffle();
-            _radioOn.SwitchToChannel(3);
-
-            Assert.AreEqual(3, _radioOn.Channel);
+            Assert.That(radio.Channel, Is.EqualTo(3));
         }
     }
 }
