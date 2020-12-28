@@ -5,7 +5,6 @@ namespace RadioTests
 {
     public class RadioChannelTests
     {
-
         private Radio CreateRadioOff()
         {
             var radio = new Radio();
@@ -35,9 +34,9 @@ namespace RadioTests
         {
             var radio = CreateRadioOff();
             
-            radio.Play();
+            var result = radio.Play();
 
-            Assert.AreEqual("Radio is off", radio.Play());
+            Assert.That(result, Is.EqualTo("Radio is off"));
         }
 
         [Test]
@@ -45,9 +44,9 @@ namespace RadioTests
         {
             var radio = CreateRadioOn();
 
-            radio.Play();
+            var result = radio.Play();
 
-            Assert.AreEqual("Playing channel 1", radio.Play());
+            Assert.That(result, Is.EqualTo("Playing channel 1"));
         }
 
         [Test]
@@ -57,7 +56,7 @@ namespace RadioTests
 
             radio.SwitchToPreviousChannel();
 
-            Assert.AreEqual(1, radio.Channel);    
+            Assert.That(radio.Channel, Is.EqualTo(1));
         }
 
         [Test]
@@ -68,7 +67,7 @@ namespace RadioTests
             radio.Channel = 2;
             radio.SwitchToPreviousChannel();
 
-            Assert.AreEqual(1, radio.Channel);
+            Assert.That(radio.Channel, Is.EqualTo(1));
         }
 
         [Test]
@@ -78,7 +77,7 @@ namespace RadioTests
 
             radio.SwitchToPreviousChannel();
 
-            Assert.AreEqual(4, radio.Channel);
+            Assert.That(radio.Channel, Is.EqualTo(4));
         }
 
         [Test]
@@ -88,7 +87,7 @@ namespace RadioTests
 
             radio.SwitchToNextChannel();
 
-            Assert.AreEqual(1, radio.Channel);
+            Assert.That(radio.Channel, Is.EqualTo(1));
         }
 
         [Test]
@@ -98,7 +97,7 @@ namespace RadioTests
 
             radio.SwitchToNextChannel();
 
-            Assert.AreEqual(2, radio.Channel);
+            Assert.That(radio.Channel, Is.EqualTo(2));
         }
 
         [Test]
@@ -109,7 +108,7 @@ namespace RadioTests
             radio.Channel = 4;
             radio.SwitchToNextChannel();
 
-            Assert.AreEqual(1, radio.Channel);
+            Assert.That(radio.Channel, Is.EqualTo(1));
         }
 
         [Test]
