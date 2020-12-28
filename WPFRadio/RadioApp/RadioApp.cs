@@ -10,7 +10,7 @@ namespace RadioApp
             get => _channel;
             set
             {
-                if (isOn)
+                if (_isOn)
                 {
                     if (value >= _lowerBound && value <= _upperBound)
                     {
@@ -26,7 +26,7 @@ namespace RadioApp
             get => _volume;
             private set
             {
-                if (isOn)
+                if (_isOn)
                 {
                     if (value >= _minVolume && value <= _maxVolume)
                     {
@@ -45,22 +45,22 @@ namespace RadioApp
 
         private int _savedVolume;
 
-        private bool isOn;
-        private bool isMuted;
-        private bool canShuffle;
+        private bool _isOn;
+        private bool _isMuted;
+        private bool _canShuffle;
 
         public string Play()
         {
-            return isOn ? $"Playing channel {_channel}" : "Radio is off";
+            return _isOn ? $"Playing channel {_channel}" : "Radio is off";
         }
 
-        public void TurnOff() => isOn = false;
+        public void TurnOff() => _isOn = false;
         
-        public void TurnOn() => isOn = true;
+        public void TurnOn() => _isOn = true;
         
         public void Mute()
         {
-            if (isMuted)
+            if (_isMuted)
             {
                 UnMute();
             }
@@ -68,22 +68,22 @@ namespace RadioApp
             {
                 _savedVolume = Volume;
                 Volume = 0;
-                isMuted = true;
+                _isMuted = true;
             }   
         }
 
         private void UnMute()
         {
-            if (isOn)
+            if (_isOn)
             {
                 Volume = _savedVolume;
-                isMuted = false;
+                _isMuted = false;
             }
         }
 
         public void VolumeDown()
         {
-            if (isMuted)
+            if (_isMuted)
             {
                 UnMute();
             }
@@ -95,7 +95,7 @@ namespace RadioApp
 
         public void VolumeUp()
         {
-            if (isMuted)
+            if (_isMuted)
             {
                 UnMute();
             }
@@ -107,7 +107,7 @@ namespace RadioApp
 
         public void VolumeMin()
         {
-            if (isMuted)
+            if (_isMuted)
             {
                 UnMute();
             }
@@ -119,7 +119,7 @@ namespace RadioApp
 
         public void VolumeMax()
         {
-            if (isMuted)
+            if (_isMuted)
             {
                 UnMute();
             }
@@ -131,18 +131,18 @@ namespace RadioApp
         
         public bool ToggleShuffle()
         {
-            if (isOn)
+            if (_isOn)
             {
-                canShuffle = !canShuffle;
+                _canShuffle = !_canShuffle;
             }
-            return canShuffle;
+            return _canShuffle;
         }
 
         public void SwitchToChannel(int channel) => Channel = channel;
         
         public void SwitchToPreviousChannel()
         {           
-            if (canShuffle)
+            if (_canShuffle)
             {
                 Channel = ShuffleChannel();
             }
@@ -155,7 +155,7 @@ namespace RadioApp
 
         public void SwitchToNextChannel()
         {
-            if (canShuffle)
+            if (_canShuffle)
             {
                 Channel = ShuffleChannel();
             }
@@ -168,7 +168,7 @@ namespace RadioApp
 
         private int ShuffleChannel()
         {
-            if (isOn)
+            if (_isOn)
             {
                 int currentChannel = Channel;
                 while (Channel == currentChannel)
