@@ -112,11 +112,32 @@ namespace RadioTests
         }
 
         [Test]
+        public void ToggleShuffle_RadioIsOff_ShuffleCommandCanNotBeToggled()
+        {
+            var radio = CreateRadioOff();
+
+            var result = radio.ToggleShuffle();
+
+            Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void ToggleShuffle_RadioIsOn_ShuffleCommandCanBeToggled()
+        {
+            var radio = CreateRadioOn();
+
+            var result = radio.ToggleShuffle();
+
+            Assert.That(result, Is.True);
+        }
+
+        [Test]
         public void ToggleShuffle_RadioIsOff_ChannelCanNotChange()
         {
             var radio = CreateRadioOff();
 
             radio.ToggleShuffle();
+            radio.SwitchToNextChannel();
 
             Assert.That(radio.Channel, Is.EqualTo(1));
         }
