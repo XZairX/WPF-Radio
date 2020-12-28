@@ -37,13 +37,23 @@ namespace RadioTests
         }
 
         [Test]
+        public void Channel_HasDefaultValueOf1()
+        {
+            var radio = new Radio();
+
+            var result = radio.Channel;
+
+            Assert.That(result, Is.EqualTo(1));
+        }
+
+        [Test]
         public void Play_RadioIsOff_ReturnsRadioOffString()
         {
             var radio = CreateRadioOff();
             
             radio.Play();
 
-            Assert.AreEqual("Radio is off", _radioOff.Play());
+            Assert.AreEqual("Radio is off", radio.Play());
         }
 
         [Test]
@@ -53,17 +63,47 @@ namespace RadioTests
 
             radio.Play();
 
-            Assert.AreEqual($"Playing channel {_channel}", _radioOn.Play());
+            Assert.AreEqual($"Playing channel {_channel}", radio.Play());
         }
 
         [Test]
-        public void ChannelCanOnlyChangeWhenTheRadioIsOn()
+        public void SwitchToPreviousChannel_RadioIsOff_ChannelDoesNotChange()
         {
-            _radioOff.SwitchToPreviousChannel();
-            _radioOn.SwitchToNextChannel();
+            var radio = CreateRadioOff();
 
-            Assert.AreEqual(1, _radioOff.Channel);
-            Assert.AreEqual(2, _radioOn.Channel);
+            radio.SwitchToPreviousChannel();
+
+            Assert.AreEqual(1, radio.Channel);    
+        }
+
+        [Test]
+        public void SwitchToPreviousChannel_RadioIsOn_ChannelDecrements()
+        {
+            var radio = CreateRadioOn();
+
+            radio.SwitchToPreviousChannel();
+
+            Assert.AreEqual(4, radio.Channel);
+        }
+
+        [Test]
+        public void SwitchToNextChannel_RadioIsOff_ChannelDoesNotChange()
+        {
+            var radio = CreateRadioOff();
+
+            radio.SwitchToNextChannel();
+
+            Assert.AreEqual(1, radio.Channel);
+        }
+
+        [Test]
+        public void SwitchToNextChannel_RadioIsOn_ChannelIncrements()
+        {
+            var radio = CreateRadioOn();
+
+            radio.SwitchToNextChannel();
+
+            Assert.AreEqual(2, radio.Channel);
         }
 
         [Test]
