@@ -49,14 +49,14 @@ namespace RadioApp
         private bool _isMuted;
         private bool _canShuffle;
 
+        public void TurnOff() => _isOn = false;
+
+        public void TurnOn() => _isOn = true;
+
         public string Play()
         {
             return _isOn ? $"Playing channel {_channel}" : "Radio is off";
         }
-
-        public void TurnOff() => _isOn = false;
-        
-        public void TurnOn() => _isOn = true;
         
         public void Mute()
         {
