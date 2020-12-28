@@ -1,2 +1,3 @@
 # WPF-Radio
-C# .NET Core Radio project featuring WPF, XAML, and NUnit.
+
+Currently in progress. See description.
