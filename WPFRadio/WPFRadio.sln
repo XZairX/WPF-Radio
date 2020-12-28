@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadioApp", "RadioApp\RadioA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadioTests", "RadioTests\RadioTests.csproj", "{A7827AE3-ACFC-4AD1-8BD6-AFB33F02F59B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPFRadio", "WPFRadio\WPFRadio.csproj", "{FB336DC3-92F3-41F1-9D95-BB8DE9407A85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RadioWPF", "RadioWPF\RadioWPF.csproj", "{C2CFE07B-5D4C-46BF-9BB1-E83F573F6A37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{A7827AE3-ACFC-4AD1-8BD6-AFB33F02F59B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7827AE3-ACFC-4AD1-8BD6-AFB33F02F59B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7827AE3-ACFC-4AD1-8BD6-AFB33F02F59B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB336DC3-92F3-41F1-9D95-BB8DE9407A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB336DC3-92F3-41F1-9D95-BB8DE9407A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB336DC3-92F3-41F1-9D95-BB8DE9407A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB336DC3-92F3-41F1-9D95-BB8DE9407A85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2CFE07B-5D4C-46BF-9BB1-E83F573F6A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2CFE07B-5D4C-46BF-9BB1-E83F573F6A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2CFE07B-5D4C-46BF-9BB1-E83F573F6A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2CFE07B-5D4C-46BF-9BB1-E83F573F6A37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
