@@ -12,7 +12,7 @@ namespace RadioApp
             {
                 if (_isOn)
                 {
-                    if (value >= _lowerBound && value <= _upperBound)
+                    if (value >= _minChannel && value <= _maxChannel)
                     {
                         _channel = value;
                     }
@@ -36,8 +36,8 @@ namespace RadioApp
             }
         }
 
-        private const int _lowerBound = 1;
-        private const int _upperBound = 4;
+        private const int _minChannel = 1;
+        private const int _maxChannel = 4;
         private const int _minVolume = 0;
         private const int _maxVolume = 100;
 
@@ -148,8 +148,8 @@ namespace RadioApp
             }
             else
             {
-                Channel = (Channel == _lowerBound) ?
-                    Channel = _upperBound : Channel -= 1;
+                Channel = (Channel == _minChannel) ?
+                    Channel = _maxChannel : Channel -= 1;
             }
         }
 
@@ -161,8 +161,8 @@ namespace RadioApp
             }
             else
             {
-                Channel = (Channel == _upperBound) ?
-                    Channel = _lowerBound : Channel += 1;
+                Channel = (Channel == _maxChannel) ?
+                    Channel = _minChannel : Channel += 1;
             }
         }
 
@@ -173,7 +173,7 @@ namespace RadioApp
                 int currentChannel = Channel;
                 while (Channel == currentChannel)
                 {
-                    Channel = _random.Next(_lowerBound, _upperBound + 1);
+                    Channel = _random.Next(_minChannel, _maxChannel + 1);
                 }
             }
             return Channel;
