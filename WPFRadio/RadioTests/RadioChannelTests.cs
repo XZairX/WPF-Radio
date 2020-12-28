@@ -5,6 +5,21 @@ namespace RadioTests
 {
     public class RadioChannelTests
     {
+
+        private Radio CreateRadioOff()
+        {
+            var radio = new Radio();
+            radio.TurnOff();
+            return radio;
+        }
+
+        private Radio CreateRadioOn()
+        {
+            var radio = new Radio();
+            radio.TurnOn();
+            return radio;
+        }
+
         private Radio _radioOff;
         private Radio _radioOn;
         private int _channel;
@@ -22,9 +37,22 @@ namespace RadioTests
         }
 
         [Test]
-        public void ChannelCanOnlyDisplayWhenTheRadioIsOn()
+        public void Play_RadioIsOff_ReturnsRadioOffString()
         {
+            var radio = CreateRadioOff();
+            
+            radio.Play();
+
             Assert.AreEqual("Radio is off", _radioOff.Play());
+        }
+
+        [Test]
+        public void Play_RadioIsOn_ReturnsPlayingChannelString()
+        {
+            var radio = CreateRadioOn();
+
+            radio.Play();
+
             Assert.AreEqual($"Playing channel {_channel}", _radioOn.Play());
         }
 
