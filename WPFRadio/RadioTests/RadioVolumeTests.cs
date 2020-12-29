@@ -37,13 +37,35 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeDownCanOnlyDecrementWhenRadioIsOn()
+        public void Volume_HasDefaultValueOf50()
         {
-            _radioOff.VolumeDown();
-            _radioOn.VolumeDown();
+            var radio = new Radio();
 
-            Assert.AreEqual(_volume, _radioOff.Volume);
-            Assert.AreEqual(_volume - 1, _radioOn.Volume);
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void VolumeDown_RadioIsOff_DoesNotSetVolume()
+        {
+            var radio = CreateRadioOff();
+
+            radio.VolumeDown();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void VolumeDown_RadioIsOn_DecrementsVolume()
+        {
+            var radio = CreateRadioOn();
+
+            radio.VolumeDown();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(49));
         }
 
         [Test]
