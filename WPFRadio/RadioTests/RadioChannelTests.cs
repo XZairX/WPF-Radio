@@ -217,11 +217,9 @@ namespace RadioTests
             Assert.That(result, Is.Not.EqualTo(channel));
         }
 
-        [TestCase(1)]
-        [TestCase(2)]
-        [TestCase(3)]
-        [TestCase(4)]
-        public void SwitchToChannel_RadioIsOn_AlwaysSetsChannelToArgumentChannel(int channel)
+        [Test]
+        public void SwitchToChannel_RadioIsOn_AlwaysSetsChannelToArgumentChannel(
+            [Range(_channelMinValueOf1, _channelMaxValueOf4)] int channel)
         {
             var radio = CreateRadioOn();
 
