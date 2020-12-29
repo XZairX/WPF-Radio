@@ -117,17 +117,6 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeUp_RadioIsOff_DoesNotSetVolume()
-        {
-            var radio = CreateRadioOff();
-
-            radio.VolumeUp();
-            var result = radio.Volume;
-
-            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
-        }
-
-        [Test]
         public void VolumeUp_RadioIsOn_IncrementsVolume()
         {
             var radio = CreateRadioOn();
@@ -136,6 +125,18 @@ namespace RadioTests
             var result = radio.Volume;
 
             Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50 + 1));
+        }
+
+        [Test]
+        public void VolumeUp_RadioIsMuted_SetsVolumeToVolumeBeforeMute()
+        {
+            var radio = CreateRadioOn();
+            radio.Mute();
+
+            radio.VolumeUp();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
         [Test]
