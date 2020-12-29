@@ -85,21 +85,9 @@ namespace RadioTests
         public void Mute_RadioIsMuted_SetsVolumeToVolumeBeforeMute()
         {
             var radio = CreateRadioOn();
-            radio.Volume += 1;
             radio.Mute();
 
             radio.Mute();
-            var result = radio.Volume;
-
-            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50 + 1));
-        }
-
-        [Test]
-        public void VolumeDown_RadioIsOff_PreventsVolumeFromBeingSet()
-        {
-            var radio = CreateRadioOff();
-
-            radio.VolumeDown();
             var result = radio.Volume;
 
             Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
@@ -114,6 +102,18 @@ namespace RadioTests
             var result = radio.Volume;
 
             Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50 - 1));
+        }
+
+        [Test]
+        public void VolumeDown_RadioIsMuted_SetsVolumeToVolumeBeforeMute()
+        {
+            var radio = CreateRadioOn();
+            radio.Mute();
+
+            radio.VolumeDown();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
         [Test]
