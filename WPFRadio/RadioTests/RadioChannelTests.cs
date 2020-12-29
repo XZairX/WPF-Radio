@@ -36,7 +36,7 @@ namespace RadioTests
 
         [TestCase(_channelMinValueOf1)]
         [TestCase(_channelMaxValueOf4)]
-        public void Channel_RadioIsOff_DoesNotSetChannel(int channel)
+        public void Channel_RadioIsOff_PreventsChannelFromBeingSet(int channel)
         {
             var radio = CreateRadioOff();
 
@@ -121,21 +121,9 @@ namespace RadioTests
             Assert.That(result, Is.False);
         }
 
-        [TestCase(_channelDefaultValueOf1)]
-        [TestCase(_channelDefaultValueOf1)]
-        public void SwitchToChannel_RadioIsOff_DoesNotSetChannelToArgumentChannel(int channel)
-        {
-            var radio = CreateRadioOff();
-
-            radio.SwitchToChannel(channel);
-            var result = radio.Channel;
-
-            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
-        }
-
         [TestCase(_channelMinValueOf1)]
         [TestCase(_channelMaxValueOf4)]
-        public void SwitchToChannel_RadioIsOn_AlwaysSetsChannelToArgumentChannel(int channel)
+        public void SwitchToChannel_RadioIsOn_SetsChannelToArgumentChannel(int channel)
         {
             var radio = CreateRadioOn();
 
