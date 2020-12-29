@@ -34,9 +34,9 @@ namespace RadioTests
             Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
         }
 
-        [Test]
-        public void Channel_RadioIsOff_DoesNotSetChannel(
-            [Range(_channelMinValueOf1, _channelMaxValueOf4)] int channel)
+        [TestCase(_channelMinValueOf1)]
+        [TestCase(_channelMaxValueOf4)]
+        public void Channel_RadioIsOff_DoesNotSetChannel(int channel)
         {
             var radio = CreateRadioOff();
 
