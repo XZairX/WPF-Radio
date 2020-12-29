@@ -31,7 +31,7 @@ namespace RadioTests
 
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace RadioTests
 
             var result = radio.Play();
 
-            Assert.That(result, Is.EqualTo("Playing channel 1"));
+            Assert.That(result, Is.EqualTo($"Playing channel {_channelDefaultValueOf1}"));
         }
 
         [Test]
@@ -62,15 +62,15 @@ namespace RadioTests
             radio.SwitchToPreviousChannel();
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
         }
 
         [Test]
         public void SwitchToPreviousChannel_RadioIsOn_DecrementsChannel()
         {
             var radio = CreateRadioOn();
-
             radio.Channel = 2;
+
             radio.SwitchToPreviousChannel();
             var result = radio.Channel;
 
@@ -81,11 +81,12 @@ namespace RadioTests
         public void SwitchToPreviousChannel_ChannelIsMinimumValue_SetsChannelToMaximumValue()
         {
             var radio = CreateRadioOn();
+            radio.Channel = _channelMinValueOf1;
 
             radio.SwitchToPreviousChannel();
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(4));
+            Assert.That(result, Is.EqualTo(_channelMaxValueOf4));
         }
 
         [Test]
@@ -96,7 +97,7 @@ namespace RadioTests
             radio.SwitchToNextChannel();
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
         }
 
         [Test]
@@ -107,19 +108,19 @@ namespace RadioTests
             radio.SwitchToNextChannel();
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(2));
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1 + 1));
         }
 
         [Test]
         public void SwitchToNextChannel_ChannelIsMaximumValue_SetsChannelToMinimumValue()
         {
             var radio = CreateRadioOn();
+            radio.Channel = _channelMaxValueOf4;
 
-            radio.Channel = 4;
             radio.SwitchToNextChannel();
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(_channelMinValueOf1));
         }
 
         [Test]
@@ -141,7 +142,7 @@ namespace RadioTests
             radio.SwitchToNextChannel();
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
         }
 
         [Test]
@@ -163,7 +164,7 @@ namespace RadioTests
             radio.SwitchToNextChannel();
             var result = radio.Channel;
 
-            Assert.That(result, Is.Not.EqualTo(1));
+            Assert.That(result, Is.Not.EqualTo(_channelDefaultValueOf1));
         }
 
         [Test]
@@ -176,7 +177,7 @@ namespace RadioTests
             radio.SwitchToNextChannel();
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(2));
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1 + 1));
         }
 
         [TestCase(2)]
