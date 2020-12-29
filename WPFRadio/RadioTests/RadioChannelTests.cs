@@ -35,6 +35,30 @@ namespace RadioTests
         }
 
         [Test]
+        public void Channel_SetsValuesInsideItsMinAndMaxBoundaries(
+            [Range(_channelMinValueOf1, _channelMaxValueOf4)] int channel)
+        {
+            var radio = CreateRadioOn();
+            
+            radio.Channel = channel;
+            var result = radio.Channel;
+
+            Assert.That(result, Is.EqualTo(channel));
+        }
+
+        [TestCase(_channelMinValueOf1 - 1)]
+        [TestCase(_channelMaxValueOf4 + 1)]
+        public void Channel_DoesNotSetValuesOutsideItsMinAndMaxBoundaries(int channel)
+        {
+            var radio = CreateRadioOn();
+
+            radio.Channel = channel;
+            var result = radio.Channel;
+
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
+        }
+
+        [Test]
         public void Play_RadioIsOff_ReturnsRadioOffString()
         {
             var radio = CreateRadioOff();
