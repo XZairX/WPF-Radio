@@ -24,6 +24,14 @@ namespace RadioTests
             return radio;
         }
 
+        private Radio CreateMutedRadio()
+        {
+            var radio = new Radio();
+            radio.TurnOn();
+            radio.Mute();
+            return radio;
+        }
+
         [Test]
         public void Volume_HasDefaultValueOf50()
         {
