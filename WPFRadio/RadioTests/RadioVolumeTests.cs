@@ -69,13 +69,25 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeUpCanOnlyIncrementWhenRadioIsOn()
+        public void VolumeUp_RadioIsOff_DoesNotSetVolume()
         {
-            _radioOff.VolumeUp();
-            _radioOn.VolumeUp();
+            var radio = CreateRadioOff();
 
-            Assert.AreEqual(_volume, _radioOff.Volume);            
-            Assert.AreEqual(_volume + 1, _radioOn.Volume);
+            radio.VolumeUp();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void VolumeUp_RadioIsOn_IncrementsVolume()
+        {
+            var radio = CreateRadioOn();
+
+            radio.VolumeUp();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(51));
         }
 
         [Test]
