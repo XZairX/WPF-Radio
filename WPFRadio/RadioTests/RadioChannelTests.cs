@@ -172,8 +172,7 @@ namespace RadioTests
             radio.SwitchToChannel(channel);
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(1));
-
+            Assert.That(result, Is.Not.EqualTo(channel));
         }
 
         [TestCase(1)]
