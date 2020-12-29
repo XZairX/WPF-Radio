@@ -116,12 +116,37 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeCanNotEscapeMinimumBoundaryValue()
+        public void VolumeMin_RadioIsOff_DoesNotSetVolume()
         {
-            _radioOn.VolumeMin();
-            _radioOn.VolumeDown();
+            var radio = CreateRadioOff();
 
-            Assert.AreEqual(0, _radioOn.Volume);
+            radio.VolumeMin();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void VolumeMin_RadioIsOn_SetsVolumeToMinimumValue()
+        {
+            var radio = CreateRadioOn();
+
+            radio.VolumeMin();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.Zero);
+        }
+
+        [Test]
+        public void VolumeDown_VolumeIsMinimumValue_DoesNotSetVolume()
+        {
+            var radio = CreateRadioOn();
+
+            radio.VolumeMin();
+            radio.VolumeDown();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.Zero);
         }
 
         [Test]
