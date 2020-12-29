@@ -69,7 +69,7 @@ namespace RadioApp
                 _savedVolume = Volume;
                 Volume = 0;
                 _isMuted = true;
-            }   
+            }
         }
 
         private void UnMute()
