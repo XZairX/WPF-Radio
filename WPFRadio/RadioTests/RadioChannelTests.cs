@@ -6,6 +6,10 @@ namespace RadioTests
     [TestFixture]
     public class RadioChannelTests
     {
+        private const int _channelDefaultValueOf1 = 1;
+        private const int _channelMinValueOf1 = 1;
+        private const int _channelMaxValueOf4 = 4;
+
         private Radio CreateRadioOff()
         {
             var radio = new Radio();
