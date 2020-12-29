@@ -34,6 +34,42 @@ namespace RadioTests
             Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
+        [TestCase(_volumeMinValueOf0)]
+        [TestCase(_volumeMaxValueOf100)]
+        public void Volume_RadioIsOff_PreventsVolumeFromBeingSet(int volume)
+        {
+            var radio = CreateRadioOff();
+
+            radio.Volume = volume;
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
+        }
+
+        [TestCase(_volumeMinValueOf0)]
+        [TestCase(_volumeMaxValueOf100)]
+        public void Volume_RadioIsOn_SetsVolumeToValuesInsideMinMaxVolumeRange(int volume)
+        {
+            var radio = CreateRadioOn();
+
+            radio.Volume = volume;
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(volume));
+        }
+
+        [TestCase(_volumeMinValueOf0 - 1)]
+        [TestCase(_volumeMaxValueOf100 + 1)]
+        public void Volume_RadioIsOn_DoesNotSetVolumeToValuesOutsideMinMaxVolumeRange(int volume)
+        {
+            var radio = CreateRadioOn();
+
+            radio.Volume = volume;
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
+        }
+
         [Test]
         public void Mute_PreventsVolumeFromBeingSet()
         {
