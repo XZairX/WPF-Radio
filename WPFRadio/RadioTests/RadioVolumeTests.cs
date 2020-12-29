@@ -6,10 +6,6 @@ namespace RadioTests
     [TestFixture]
     public class RadioVolumeTests
     {
-        private Radio _radioOff;
-        private Radio _radioOn;
-        private int _volume;
-
         private Radio CreateRadioOff()
         {
             var radio = new Radio();
@@ -22,18 +18,6 @@ namespace RadioTests
             var radio = new Radio();
             radio.TurnOn();
             return radio;
-        }
-
-        [SetUp]
-        public void Setup()
-        {
-            _radioOff = new Radio();
-            _radioOff.TurnOff();
-
-            _radioOn = new Radio();
-            _radioOn.TurnOn();
-
-            _volume = _radioOn.Volume;
         }
 
         [Test]
