@@ -91,16 +91,28 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeCanNotChangeWhenMute()
+        public void Mute_PreventsVolumeFromBeingSet()
         {
-            _radioOff.Mute();
-            _radioOff.VolumeDown();
+            var radio = CreateRadioOn();
 
-            _radioOn.Mute();
-            _radioOn.VolumeUp();
+            radio.Mute();
+            radio.VolumeUp();
+            var result = radio.Volume;
 
-            Assert.AreEqual(_volume, _radioOff.Volume);
-            Assert.AreEqual(_volume, _radioOn.Volume);
+            Assert.That(result, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void Mute_CalledTwice_DisablesMuteFunctionality()
+        {
+            var radio = CreateRadioOn();
+
+            radio.Mute();
+            radio.Mute();
+            radio.VolumeUp();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(51));
         }
 
         [Test]
