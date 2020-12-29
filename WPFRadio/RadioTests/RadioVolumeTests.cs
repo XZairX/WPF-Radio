@@ -140,18 +140,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeMin_RadioIsOff_DoesNotSetVolume()
-        {
-            var radio = CreateRadioOff();
-
-            radio.VolumeMin();
-            var result = radio.Volume;
-
-            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
-        }
-
-        [Test]
-        public void VolumeMin_RadioIsOn_SetsVolumeToMinimumValue()
+        public void VolumeMin_RadioIsOn_SetsVolumeToMinimumVolume()
         {
             var radio = CreateRadioOn();
 
@@ -159,6 +148,18 @@ namespace RadioTests
             var result = radio.Volume;
 
             Assert.That(result, Is.EqualTo(_volumeMinValueOf0));
+        }
+
+        [Test]
+        public void VolumeMin_RadioIsMuted_SetsVolumeToVolumeBeforeMute()
+        {
+            var radio = CreateRadioOn();
+            radio.Mute();
+
+            radio.VolumeMin();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
         [Test]
