@@ -163,29 +163,6 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeDown_VolumeIsMinimumValue_DoesNotSetVolume()
-        {
-            var radio = CreateRadioOn();
-            radio.VolumeMin();
-
-            radio.VolumeDown();
-            var result = radio.Volume;
-
-            Assert.That(result, Is.EqualTo(_volumeMinValueOf0));
-        }
-
-        [Test]
-        public void VolumeMax_RadioIsOff_DoesNotSetVolume()
-        {
-            var radio = CreateRadioOff();
-
-            radio.VolumeMax();
-            var result = radio.Volume;
-
-            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
-        }
-
-        [Test]
         public void VolumeMax_RadioIsOn_SetsVolumeToMaximumValue()
         {
             var radio = CreateRadioOn();
@@ -197,15 +174,15 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeUp_VolumeIsMaximumValue_DoesNotSetVolume()
+        public void VolumeMax_RadioIsMuted_SetsVolumeToVolumeBeforeMute()
         {
             var radio = CreateRadioOn();
-            radio.VolumeMax();
+            radio.Mute();
 
-            radio.VolumeUp();
+            radio.VolumeMax();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(_volumeMaxValueOf100));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
     }
 }
