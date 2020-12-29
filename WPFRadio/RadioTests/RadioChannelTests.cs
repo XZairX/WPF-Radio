@@ -3,6 +3,7 @@ using RadioApp;
 
 namespace RadioTests
 {
+    [TestFixture]
     public class RadioChannelTests
     {
         private Radio CreateRadioOff()
@@ -161,16 +162,19 @@ namespace RadioTests
             Assert.That(result, Is.Not.EqualTo(1));
         }
 
-        [Test]
-        public void SwitchToChannel_RadioIsOn_AlwaysSetsChannelToArgumentChannel()
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        public void SwitchToChannel_RadioIsOn_AlwaysSetsChannelToArgumentChannel(int channel)
         {
             var radio = CreateRadioOn();
 
             radio.ToggleShuffle();
-            radio.SwitchToChannel(3);
+            radio.SwitchToChannel(channel);
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(3));
+            Assert.That(result, Is.EqualTo(channel));
         }
     }
 }
