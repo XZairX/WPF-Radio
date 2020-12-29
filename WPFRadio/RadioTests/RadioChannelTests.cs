@@ -40,7 +40,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void Play_RadioIsOn_ReturnsPlayingChannelString()
+        public void Play_RadioIsOn_ReturnsRadioOnString()
         {
             var radio = CreateRadioOn();
 
