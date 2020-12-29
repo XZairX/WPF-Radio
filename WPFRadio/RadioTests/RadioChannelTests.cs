@@ -50,7 +50,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToPreviousChannel_RadioIsOff_ChannelDoesNotChange()
+        public void SwitchToPreviousChannel_RadioIsOff_DoesNotSetChannel()
         {
             var radio = CreateRadioOff();
 
@@ -61,7 +61,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToPreviousChannel_RadioIsOn_ChannelDecrements()
+        public void SwitchToPreviousChannel_RadioIsOn_DecrementsChannel()
         {
             var radio = CreateRadioOn();
 
@@ -73,7 +73,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToPreviousChannel_ChannelIsMinimumValue_ChannelIsSetToMaximumValue()
+        public void SwitchToPreviousChannel_ChannelIsMinimumValue_SetsChannelToMaximumValue()
         {
             var radio = CreateRadioOn();
 
@@ -84,7 +84,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToNextChannel_RadioIsOff_ChannelDoesNotChange()
+        public void SwitchToNextChannel_RadioIsOff_DoesNotSetChannel()
         {
             var radio = CreateRadioOff();
 
@@ -95,7 +95,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToNextChannel_RadioIsOn_ChannelIncrements()
+        public void SwitchToNextChannel_RadioIsOn_IncrementsChannel()
         {
             var radio = CreateRadioOn();
 
@@ -106,7 +106,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToNextChannel_ChannelIsMaximumValue_ChannelIsSetToMinimumValue()
+        public void SwitchToNextChannel_ChannelIsMaximumValue_SetsChannelToMinimumValue()
         {
             var radio = CreateRadioOn();
 
@@ -118,7 +118,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void ToggleShuffle_RadioIsOff_ShuffleCommandCanNotBeToggled()
+        public void ToggleShuffle_RadioIsOff_ReturnsFalse()
         {
             var radio = CreateRadioOff();
 
@@ -128,7 +128,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void ToggleShuffle_RadioIsOn_ShuffleCommandCanBeToggled()
+        public void ToggleShuffle_RadioIsOn_ReturnsTrue()
         {
             var radio = CreateRadioOn();
 
@@ -138,7 +138,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void ToggleShuffle_RadioIsOff_ChannelCanNotChange()
+        public void ToggleShuffle_RadioIsOff_CanNotSetChannel()
         {
             var radio = CreateRadioOff();
 
@@ -150,7 +150,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void ToggleShuffle_RadioIsOn_ChannelChangesToAUniqueChannel()
+        public void ToggleShuffle_RadioIsOn_SetsChannelToADifferentChannel()
         {
             var radio = CreateRadioOn();
 
@@ -162,7 +162,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToChannel_RadioIsOnWithToggleShuffleOn_ChannelIsSwitchedToArgumentChannel()
+        public void SwitchToChannel_RadioIsOn_AlwaysSetsChannelToArgumentChannel()
         {
             var radio = CreateRadioOn();
 
