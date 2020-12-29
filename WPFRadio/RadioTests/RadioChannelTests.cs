@@ -138,16 +138,16 @@ namespace RadioTests
         public void SwitchToPreviousChannel_RadioIsOn_DecrementsChannel()
         {
             var radio = CreateRadioOn();
-            radio.Channel = 2;
+            radio.Channel += 1;
 
             radio.SwitchToPreviousChannel();
             var result = radio.Channel;
 
-            Assert.That(result, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
         }
 
         [Test]
-        public void SwitchToPreviousChannel_ChannelIsMinimumValue_SetsChannelToMaximumValue()
+        public void SwitchToPreviousChannel_ChannelIsMinimumValue_SetsChannelToMaximumChannel()
         {
             var radio = CreateRadioOn();
             radio.Channel = _channelMinValueOf1;
@@ -159,7 +159,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToPreviousChannel_ToggleShuffleReturnsTrue_SetsRandomChannel()
+        public void SwitchToPreviousChannel_ToggleShuffleReturnsTrue_SetsChannelToRandomChannel()
         {
             var radio = CreateRadioOn();
             radio.ToggleShuffle();
@@ -168,17 +168,6 @@ namespace RadioTests
             var result = radio.Channel;
 
             Assert.That(result, Is.Not.EqualTo(_channelDefaultValueOf1));
-        }
-
-        [Test]
-        public void SwitchToNextChannel_RadioIsOff_DoesNotSetChannel()
-        {
-            var radio = CreateRadioOff();
-
-            radio.SwitchToNextChannel();
-            var result = radio.Channel;
-
-            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
         }
 
         [Test]
@@ -193,7 +182,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToNextChannel_ChannelIsMaximumValue_SetsChannelToMinimumValue()
+        public void SwitchToNextChannel_ChannelIsMaximumValue_SetsChannelToMinimumChannel()
         {
             var radio = CreateRadioOn();
             radio.Channel = _channelMaxValueOf4;
@@ -202,6 +191,18 @@ namespace RadioTests
             var result = radio.Channel;
 
             Assert.That(result, Is.EqualTo(_channelMinValueOf1));
+        }
+
+        [Test]
+        public void SwitchToNextChannel_ToggleShuffleReturnsTrue_SetsChannelToRandomChannel()
+        {
+            var radio = CreateRadioOn();
+            radio.ToggleShuffle();
+
+            radio.SwitchToNextChannel();
+            var result = radio.Channel;
+
+            Assert.That(result, Is.Not.EqualTo(_channelDefaultValueOf1));
         }
     }
 }
