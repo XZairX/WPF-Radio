@@ -162,6 +162,19 @@ namespace RadioTests
             Assert.That(result, Is.Not.EqualTo(1));
         }
 
+        [Test]
+        public void ToggleShuffle_CalledTwice_DisablesShuffleFunctionality()
+        {
+            var radio = CreateRadioOn();
+
+            radio.ToggleShuffle();
+            radio.ToggleShuffle();
+            radio.SwitchToNextChannel();
+            var result = radio.Channel;
+
+            Assert.That(result, Is.EqualTo(2));
+        }
+
         [TestCase(2)]
         [TestCase(3)]
         [TestCase(4)]
