@@ -55,8 +55,9 @@ namespace RadioTests
             var radio = CreateRadioOff();
 
             radio.SwitchToPreviousChannel();
+            var result = radio.Channel;
 
-            Assert.That(radio.Channel, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(1));
         }
 
         [Test]
@@ -66,8 +67,9 @@ namespace RadioTests
 
             radio.Channel = 2;
             radio.SwitchToPreviousChannel();
+            var result = radio.Channel;
 
-            Assert.That(radio.Channel, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(1));
         }
 
         [Test]
@@ -76,8 +78,9 @@ namespace RadioTests
             var radio = CreateRadioOn();
 
             radio.SwitchToPreviousChannel();
+            var result = radio.Channel;
 
-            Assert.That(radio.Channel, Is.EqualTo(4));
+            Assert.That(result, Is.EqualTo(4));
         }
 
         [Test]
@@ -86,8 +89,9 @@ namespace RadioTests
             var radio = CreateRadioOff();
 
             radio.SwitchToNextChannel();
+            var result = radio.Channel;
 
-            Assert.That(radio.Channel, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(1));
         }
 
         [Test]
@@ -96,8 +100,9 @@ namespace RadioTests
             var radio = CreateRadioOn();
 
             radio.SwitchToNextChannel();
+            var result = radio.Channel;
 
-            Assert.That(radio.Channel, Is.EqualTo(2));
+            Assert.That(result, Is.EqualTo(2));
         }
 
         [Test]
@@ -107,8 +112,9 @@ namespace RadioTests
 
             radio.Channel = 4;
             radio.SwitchToNextChannel();
+            var result = radio.Channel;
 
-            Assert.That(radio.Channel, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(1));
         }
 
         [Test]
@@ -138,8 +144,9 @@ namespace RadioTests
 
             radio.ToggleShuffle();
             radio.SwitchToNextChannel();
+            var result = radio.Channel;
 
-            Assert.That(radio.Channel, Is.EqualTo(1));
+            Assert.That(result, Is.EqualTo(1));
         }
 
         [Test]
@@ -149,8 +156,9 @@ namespace RadioTests
 
             radio.ToggleShuffle();
             radio.SwitchToNextChannel();
+            var result = radio.Channel;
 
-            Assert.That(radio.Channel, Is.Not.EqualTo(1));
+            Assert.That(result, Is.Not.EqualTo(1));
         }
 
         [Test]
@@ -160,8 +168,9 @@ namespace RadioTests
 
             radio.ToggleShuffle();
             radio.SwitchToChannel(3);
+            var result = radio.Channel;
 
-            Assert.That(radio.Channel, Is.EqualTo(3));
+            Assert.That(result, Is.EqualTo(3));
         }
     }
 }
