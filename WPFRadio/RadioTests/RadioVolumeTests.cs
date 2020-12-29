@@ -150,12 +150,37 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeCanNotEscapeMaximumBoundaryValue()
+        public void VolumeMax_RadioIsOff_DoesNotSetVolume()
         {
-            _radioOn.VolumeMax();
-            _radioOn.VolumeUp();
+            var radio = CreateRadioOff();
 
-            Assert.AreEqual(100, _radioOn.Volume);
+            radio.VolumeMax();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void VolumeMax_RadioIsOn_SetsVolumeToMaximumValue()
+        {
+            var radio = CreateRadioOn();
+
+            radio.VolumeMax();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(100));
+        }
+
+        [Test]
+        public void VolumeUp_VolumeIsMaximumValue_DoesNotSetVolume()
+        {
+            var radio = CreateRadioOn();
+
+            radio.VolumeMax();
+            radio.VolumeUp();
+            var result = radio.Volume;
+
+            Assert.That(result, Is.EqualTo(100));
         }
     }
 }
