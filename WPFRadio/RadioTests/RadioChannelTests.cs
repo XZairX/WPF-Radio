@@ -135,21 +135,10 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToPreviousChannel_RadioIsOff_DoesNotSetChannel()
-        {
-            var radio = CreateRadioOff();
-
-            radio.SwitchToPreviousChannel();
-            var result = radio.Channel;
-
-            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
-        }
-
-        [Test]
         public void SwitchToPreviousChannel_RadioIsOn_DecrementsChannel()
         {
             var radio = CreateRadioOn();
-            radio.Channel += 1;
+            radio.Channel = 2;
 
             radio.SwitchToPreviousChannel();
             var result = radio.Channel;
@@ -167,6 +156,18 @@ namespace RadioTests
             var result = radio.Channel;
 
             Assert.That(result, Is.EqualTo(_channelMaxValueOf4));
+        }
+
+        [Test]
+        public void SwitchToPreviousChannel_ToggleShuffleReturnsTrue_SetsRandomChannel()
+        {
+            var radio = CreateRadioOn();
+            radio.ToggleShuffle();
+
+            radio.SwitchToPreviousChannel();
+            var result = radio.Channel;
+
+            Assert.That(result, Is.Not.EqualTo(_channelDefaultValueOf1));
         }
 
         [Test]
