@@ -24,7 +24,7 @@ namespace RadioApp
         public int Volume
         {
             get => _volume;
-            private set
+            set
             {
                 if (_isOn)
                 {
