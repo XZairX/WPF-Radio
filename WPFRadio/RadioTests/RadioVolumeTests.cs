@@ -91,11 +91,11 @@ namespace RadioTests
         }
 
         [Test]
-        public void Mute_CalledTwice_DisablesMuteFunctionality()
+        public void Mute_RadioIsMuted_EnablesVolumeToBeSet()
         {
             var radio = CreateRadioOn();
-
             radio.Mute();
+
             radio.Mute();
             radio.VolumeUp();
             var result = radio.Volume;
@@ -126,11 +126,11 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeDown_VolumeIsMinimumValue_DoesNotDecreemntVolume()
+        public void VolumeDown_VolumeIsMinimumValue_DoesNotSetVolume()
         {
             var radio = CreateRadioOn();
-
             radio.VolumeMin();
+
             radio.VolumeDown();
             var result = radio.Volume;
 
@@ -160,11 +160,11 @@ namespace RadioTests
         }
 
         [Test]
-        public void VolumeUp_VolumeIsMaximumValue_DoesNotIncrementVolume()
+        public void VolumeUp_VolumeIsMaximumValue_DoesNotSetVolume()
         {
             var radio = CreateRadioOn();
-
             radio.VolumeMax();
+
             radio.VolumeUp();
             var result = radio.Volume;
 
