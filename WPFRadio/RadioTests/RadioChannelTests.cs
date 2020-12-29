@@ -35,7 +35,19 @@ namespace RadioTests
         }
 
         [Test]
-        public void Channel_SetsValuesInsideItsMinAndMaxBoundaries(
+        public void Channel_RadioIsOff_DoesNotSetChannel(
+            [Range(_channelMinValueOf1, _channelMaxValueOf4)] int channel)
+        {
+            var radio = CreateRadioOff();
+
+            radio.Channel = channel;
+            var result = radio.Channel;
+
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
+        }
+
+        [Test]
+        public void Channel_RadioIsOn_SetsValuesInsideChannelMinAndMaxBoundaries(
             [Range(_channelMinValueOf1, _channelMaxValueOf4)] int channel)
         {
             var radio = CreateRadioOn();
@@ -48,7 +60,7 @@ namespace RadioTests
 
         [TestCase(_channelMinValueOf1 - 1)]
         [TestCase(_channelMaxValueOf4 + 1)]
-        public void Channel_DoesNotSetValuesOutsideItsMinAndMaxBoundaries(int channel)
+        public void Channel_RadioIsOn_DoesNotSetValuesOutsideChannelMinAndMaxBoundaries(int channel)
         {
             var radio = CreateRadioOn();
 
@@ -93,7 +105,7 @@ namespace RadioTests
         public void SwitchToPreviousChannel_RadioIsOn_DecrementsChannel()
         {
             var radio = CreateRadioOn();
-            radio.Channel = 2;
+            radio.Channel += 1;
 
             radio.SwitchToPreviousChannel();
             var result = radio.Channel;
@@ -204,9 +216,8 @@ namespace RadioTests
             Assert.That(result, Is.EqualTo(_channelDefaultValueOf1 + 1));
         }
 
-        [TestCase(2)]
-        [TestCase(3)]
-        [TestCase(4)]
+        [TestCase(_channelDefaultValueOf1 - 1)]
+        [TestCase(_channelDefaultValueOf1 + 1)]
         public void SwitchToChannel_RadioIsOff_DoesNotSetChannelToArgumentChannel(int channel)
         {
             var radio = CreateRadioOff();
