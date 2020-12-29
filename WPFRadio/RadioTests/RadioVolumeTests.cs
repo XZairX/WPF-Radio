@@ -6,6 +6,10 @@ namespace RadioTests
     [TestFixture]
     public class RadioVolumeTests
     {
+        private const int _volumeDefaultValueOf50 = 50;
+        private const int _volumeMinValueOf0 = 0;
+        private const int _volumeMaxValueOf100 = 100;
+
         private Radio CreateRadioOff()
         {
             var radio = new Radio();
@@ -27,7 +31,7 @@ namespace RadioTests
 
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(50));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
         [Test]
@@ -38,7 +42,7 @@ namespace RadioTests
             radio.VolumeDown();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(50));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
         [Test]
@@ -49,7 +53,7 @@ namespace RadioTests
             radio.VolumeDown();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(49));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50 - 1));
         }
 
         [Test]
@@ -60,7 +64,7 @@ namespace RadioTests
             radio.VolumeUp();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(50));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
         [Test]
@@ -71,7 +75,7 @@ namespace RadioTests
             radio.VolumeUp();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(51));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50 + 1));
         }
 
         [Test]
@@ -83,7 +87,7 @@ namespace RadioTests
             radio.VolumeUp();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(50));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
         [Test]
@@ -96,7 +100,7 @@ namespace RadioTests
             radio.VolumeUp();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(51));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50 + 1));
         }
 
         [Test]
@@ -107,7 +111,7 @@ namespace RadioTests
             radio.VolumeMin();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(50));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
         [Test]
@@ -118,11 +122,11 @@ namespace RadioTests
             radio.VolumeMin();
             var result = radio.Volume;
 
-            Assert.That(result, Is.Zero);
+            Assert.That(result, Is.EqualTo(_volumeMinValueOf0));
         }
 
         [Test]
-        public void VolumeDown_VolumeIsMinimumValue_DoesNotSetVolume()
+        public void VolumeDown_VolumeIsMinimumValue_DoesNotDecreemntVolume()
         {
             var radio = CreateRadioOn();
 
@@ -130,7 +134,7 @@ namespace RadioTests
             radio.VolumeDown();
             var result = radio.Volume;
 
-            Assert.That(result, Is.Zero);
+            Assert.That(result, Is.EqualTo(_volumeMinValueOf0));
         }
 
         [Test]
@@ -141,7 +145,7 @@ namespace RadioTests
             radio.VolumeMax();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(50));
+            Assert.That(result, Is.EqualTo(_volumeDefaultValueOf50));
         }
 
         [Test]
@@ -152,11 +156,11 @@ namespace RadioTests
             radio.VolumeMax();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(100));
+            Assert.That(result, Is.EqualTo(_volumeMaxValueOf100));
         }
 
         [Test]
-        public void VolumeUp_VolumeIsMaximumValue_DoesNotSetVolume()
+        public void VolumeUp_VolumeIsMaximumValue_DoesNotIncrementVolume()
         {
             var radio = CreateRadioOn();
 
@@ -164,7 +168,7 @@ namespace RadioTests
             radio.VolumeUp();
             var result = radio.Volume;
 
-            Assert.That(result, Is.EqualTo(100));
+            Assert.That(result, Is.EqualTo(_volumeMaxValueOf100));
         }
     }
 }
