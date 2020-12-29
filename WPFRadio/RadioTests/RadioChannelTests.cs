@@ -151,7 +151,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void ToggleShuffle_RadioIsOn_SetsChannelToADifferentChannel()
+        public void ToggleShuffle_RadioIsOn_SetsChannelToARandomChannel()
         {
             var radio = CreateRadioOn();
 
@@ -163,11 +163,11 @@ namespace RadioTests
         }
 
         [Test]
-        public void ToggleShuffle_CalledTwice_DisablesShuffleFunctionality()
+        public void ToggleShuffle_ToggleShuffleReturnsTrue_DisablesShuffleFunctionality()
         {
             var radio = CreateRadioOn();
-
             radio.ToggleShuffle();
+
             radio.ToggleShuffle();
             radio.SwitchToNextChannel();
             var result = radio.Channel;

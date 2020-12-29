@@ -91,7 +91,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void Mute_RadioIsMuted_EnablesVolumeToBeSet()
+        public void Mute_RadioIsMuted_DisablesMuteFunctionality()
         {
             var radio = CreateRadioOn();
             radio.Mute();
