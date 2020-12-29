@@ -48,7 +48,7 @@ namespace RadioTests
 
         [TestCase(_channelMinValueOf1)]
         [TestCase(_channelMaxValueOf4)]
-        public void Channel_RadioIsOn_SetsChannelToValuesInsideMinAndMaxBoundaries(int channel)
+        public void Channel_RadioIsOn_SetsChannelToValuesInsideMinMaxChannelRange(int channel)
         {
             var radio = CreateRadioOn();
             
@@ -60,7 +60,7 @@ namespace RadioTests
 
         [TestCase(_channelMinValueOf1 - 1)]
         [TestCase(_channelMaxValueOf4 + 1)]
-        public void Channel_RadioIsOn_DoesNotSetChannelToValuesOutsideMinAndMaxBoundaries(int channel)
+        public void Channel_RadioIsOn_DoesNotSetChannelToValuesOutsideMinMaxChannelRange(int channel)
         {
             var radio = CreateRadioOn();
 
@@ -127,7 +127,6 @@ namespace RadioTests
         {
             var radio = CreateRadioOn();
 
-            radio.ToggleShuffle();
             radio.SwitchToChannel(channel);
             var result = radio.Channel;
 
