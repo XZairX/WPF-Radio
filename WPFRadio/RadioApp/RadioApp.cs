@@ -128,15 +128,6 @@ namespace RadioApp
                 Volume = _maxVolume;
             }
         }
-        
-        public bool ToggleShuffle()
-        {
-            if (_isOn)
-            {
-                _canShuffle = !_canShuffle;
-            }
-            return _canShuffle;
-        }
 
         public void SwitchToChannel(int channel) => Channel = channel;
         
@@ -164,6 +155,15 @@ namespace RadioApp
                 Channel = (Channel == _maxChannel) ?
                     Channel = _minChannel : Channel += 1;
             }
+        }
+
+        public bool ToggleShuffle()
+        {
+            if (_isOn)
+            {
+                _canShuffle = !_canShuffle;
+            }
+            return _canShuffle;
         }
 
         private int ShuffleChannel()

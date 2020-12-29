@@ -90,65 +90,8 @@ namespace RadioTests
             Assert.That(result, Is.EqualTo($"Playing channel {_channelDefaultValueOf1}"));
         }
 
-        [Test]
-        public void ToggleShuffle_RadioIsOff_ReturnsFalse()
-        {
-            var radio = CreateRadioOff();
-
-            var result = radio.ToggleShuffle();
-
-            Assert.That(result, Is.False);
-        }
-
-        [Test]
-        public void ToggleShuffle_RadioIsOff_CanNotSetChannel()
-        {
-            var radio = CreateRadioOff();
-
-            radio.ToggleShuffle();
-            radio.SwitchToNextChannel();
-            var result = radio.Channel;
-
-            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
-        }
-
-        [Test]
-        public void ToggleShuffle_RadioIsOn_ReturnsTrue()
-        {
-            var radio = CreateRadioOn();
-
-            var result = radio.ToggleShuffle();
-
-            Assert.That(result, Is.True);
-        }
-
-        [Test]
-        public void ToggleShuffle_RadioIsOn_SetsChannelToARandomChannel()
-        {
-            var radio = CreateRadioOn();
-
-            radio.ToggleShuffle();
-            radio.SwitchToNextChannel();
-            var result = radio.Channel;
-
-            Assert.That(result, Is.Not.EqualTo(_channelDefaultValueOf1));
-        }
-
-        [Test]
-        public void ToggleShuffle_ToggleShuffleReturnsTrue_DisablesShuffleFunctionality()
-        {
-            var radio = CreateRadioOn();
-            radio.ToggleShuffle();
-
-            radio.ToggleShuffle();
-            radio.SwitchToNextChannel();
-            var result = radio.Channel;
-
-            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1 + 1));
-        }
-
-        [TestCase(_channelDefaultValueOf1)]
-        [TestCase(_channelDefaultValueOf1)]
+        [TestCase(_channelMinValueOf1)]
+        [TestCase(_channelMaxValueOf4)]
         public void SwitchToChannel_RadioIsOff_DoesNotSetChannelToArgumentChannel(int channel)
         {
             var radio = CreateRadioOff();
@@ -239,6 +182,64 @@ namespace RadioTests
             var result = radio.Channel;
 
             Assert.That(result, Is.EqualTo(_channelMinValueOf1));
+        }
+
+        [Test]
+        public void ToggleShuffle_RadioIsOff_ReturnsFalse()
+        {
+            var radio = CreateRadioOff();
+
+            var result = radio.ToggleShuffle();
+
+            Assert.That(result, Is.False);
+        }
+
+        [Test]
+        public void ToggleShuffle_RadioIsOn_ReturnsTrue()
+        {
+            var radio = CreateRadioOn();
+
+            var result = radio.ToggleShuffle();
+
+            Assert.That(result, Is.True);
+        }
+
+        [TestCase(_channelMinValueOf1)]
+        [TestCase(_channelMaxValueOf4)]
+        public void ToggleShuffle_RadioIsOff_CanNotSetChannel(int channel)
+        {
+            var radio = CreateRadioOff();
+
+            radio.ToggleShuffle();
+            radio.Channel = channel;
+            var result = radio.Channel;
+
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
+        }
+
+        [Test]
+        public void ToggleShuffle_RadioIsOn_SetsChannelToARandomChannel()
+        {
+            var radio = CreateRadioOn();
+
+            radio.ToggleShuffle();
+            radio.SwitchToNextChannel();
+            var result = radio.Channel;
+
+            Assert.That(result, Is.Not.EqualTo(_channelDefaultValueOf1));
+        }
+
+        [Test]
+        public void ToggleShuffle_ToggleShuffleReturnsTrue_DisablesShuffleFunctionality()
+        {
+            var radio = CreateRadioOn();
+            radio.ToggleShuffle();
+
+            radio.ToggleShuffle();
+            radio.SwitchToNextChannel();
+            var result = radio.Channel;
+
+            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1 + 1));
         }
     }
 }
