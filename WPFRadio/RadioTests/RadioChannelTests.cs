@@ -129,16 +129,6 @@ namespace RadioTests
         }
 
         [Test]
-        public void ToggleShuffle_RadioIsOn_ReturnsTrue()
-        {
-            var radio = CreateRadioOn();
-
-            var result = radio.ToggleShuffle();
-
-            Assert.That(result, Is.True);
-        }
-
-        [Test]
         public void ToggleShuffle_RadioIsOff_CanNotSetChannel()
         {
             var radio = CreateRadioOff();
@@ -151,6 +141,16 @@ namespace RadioTests
         }
 
         [Test]
+        public void ToggleShuffle_RadioIsOn_ReturnsTrue()
+        {
+            var radio = CreateRadioOn();
+
+            var result = radio.ToggleShuffle();
+
+            Assert.That(result, Is.True);
+        }
+
+        [Test]
         public void ToggleShuffle_RadioIsOn_SetsChannelToADifferentChannel()
         {
             var radio = CreateRadioOn();
@@ -160,6 +160,20 @@ namespace RadioTests
             var result = radio.Channel;
 
             Assert.That(result, Is.Not.EqualTo(1));
+        }
+
+        [TestCase(2)]
+        [TestCase(3)]
+        [TestCase(4)]
+        public void SwitchToChannel_RadioIsOff_DoesNotSetChannelToArgumentChannel(int channel)
+        {
+            var radio = CreateRadioOff();
+
+            radio.SwitchToChannel(channel);
+            var result = radio.Channel;
+
+            Assert.That(result, Is.EqualTo(1));
+
         }
 
         [TestCase(1)]
