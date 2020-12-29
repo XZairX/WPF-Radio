@@ -101,18 +101,6 @@ namespace RadioTests
         }
 
         [Test]
-        public void ToggleShuffle_RadioIsOff_CanNotSetChannel()
-        {
-            var radio = CreateRadioOff();
-
-            radio.ToggleShuffle();
-            radio.SwitchToNextChannel();
-            var result = radio.Channel;
-
-            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1));
-        }
-
-        [Test]
         public void ToggleShuffle_RadioIsOn_ReturnsTrue()
         {
             var radio = CreateRadioOn();
@@ -123,28 +111,14 @@ namespace RadioTests
         }
 
         [Test]
-        public void ToggleShuffle_RadioIsOn_SetsChannelToARandomChannel()
-        {
-            var radio = CreateRadioOn();
-
-            radio.ToggleShuffle();
-            radio.SwitchToNextChannel();
-            var result = radio.Channel;
-
-            Assert.That(result, Is.Not.EqualTo(_channelDefaultValueOf1));
-        }
-
-        [Test]
         public void ToggleShuffle_ToggleShuffleReturnsTrue_DisablesShuffleFunctionality()
         {
             var radio = CreateRadioOn();
             radio.ToggleShuffle();
 
-            radio.ToggleShuffle();
-            radio.SwitchToNextChannel();
-            var result = radio.Channel;
-
-            Assert.That(result, Is.EqualTo(_channelDefaultValueOf1 + 1));
+            var result = radio.ToggleShuffle();
+            
+            Assert.That(result, Is.False);
         }
 
         [TestCase(_channelDefaultValueOf1)]
