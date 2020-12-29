@@ -48,7 +48,7 @@ namespace RadioTests
 
         [TestCase(_channelMinValueOf1)]
         [TestCase(_channelMaxValueOf4)]
-        public void Channel_RadioIsOn_SetsValuesInsideChannelMinAndMaxBoundaries(int channel)
+        public void Channel_RadioIsOn_SetsChannelToValuesInsideMinAndMaxBoundaries(int channel)
         {
             var radio = CreateRadioOn();
             
@@ -60,7 +60,7 @@ namespace RadioTests
 
         [TestCase(_channelMinValueOf1 - 1)]
         [TestCase(_channelMaxValueOf4 + 1)]
-        public void Channel_RadioIsOn_DoesNotSetValuesOutsideChannelMinAndMaxBoundaries(int channel)
+        public void Channel_RadioIsOn_DoesNotSetChannelToValuesOutsideMinAndMaxBoundaries(int channel)
         {
             var radio = CreateRadioOn();
 
@@ -147,7 +147,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToPreviousChannel_ChannelIsMinimumValue_SetsChannelToMaximumChannel()
+        public void SwitchToPreviousChannel_ChannelIsMinimumChannel_SetsChannelToMaximumChannel()
         {
             var radio = CreateRadioOn();
             radio.Channel = _channelMinValueOf1;
@@ -182,7 +182,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void SwitchToNextChannel_ChannelIsMaximumValue_SetsChannelToMinimumChannel()
+        public void SwitchToNextChannel_ChannelIsMaximumChannel_SetsChannelToMinimumChannel()
         {
             var radio = CreateRadioOn();
             radio.Channel = _channelMaxValueOf4;
