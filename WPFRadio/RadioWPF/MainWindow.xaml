@@ -21,11 +21,26 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Button x:Name="ButtonPrevious" x:FieldModifier="private" Grid.Row="3" Grid.Column="0" FontWeight="Bold" Click="Button_Click">PREV</Button>
-        <Button x:Name="ButtonOn" x:FieldModifier="private" Grid.Row="3" Grid.Column="1" FontWeight="Bold" Click="Button_Click">ON</Button>
-        <Button x:Name="ButtonPlay" x:FieldModifier="private" Grid.Row="3" Grid.Column="2" FontWeight="Bold" Click="Button_Click">PLAY</Button>
-        <Button x:Name="ButtonOff" x:FieldModifier="private" Grid.Row="3" Grid.Column="3" FontWeight="Bold" Click="Button_Click">OFF</Button>
-        <Button x:Name="ButtonNext" x:FieldModifier="private" Grid.Row="3" Grid.Column="5" FontWeight="Bold" Click="Button_Click">NEXT</Button>
+        
+        <Button x:Name="ButtonPrevious" x:FieldModifier="private"
+                Grid.Row="3" Grid.Column="0" FontWeight="Bold"
+                Click="Button_Click">PREV</Button>
+        
+        <Button x:Name="ButtonOn" x:FieldModifier="private"
+                Grid.Row="3" Grid.Column="1" FontWeight="Bold"
+                Click="Button_Click">ON</Button>
+        
+        <Button x:Name="ButtonPlay" x:FieldModifier="private"
+                Grid.Row="3" Grid.Column="2" FontWeight="Bold"
+                Click="Button_Click">PLAY</Button>
+        
+        <Button x:Name="ButtonOff" x:FieldModifier="private"
+                Grid.Row="3" Grid.Column="3" FontWeight="Bold"
+                Click="Button_Click">OFF</Button>
+        
+        <Button x:Name="ButtonNext" x:FieldModifier="private"
+                Grid.Row="3" Grid.Column="5" FontWeight="Bold"
+                Click="Button_Click">NEXT</Button>
 
         <Button x:Name="ButtonVolumeMin" x:FieldModifier="private" Grid.Row="2" Grid.Column="0" FontWeight="Bold"
                 MouseDoubleClick="MouseButton_DoubleClick" Content="VOL&#xa;MIN"></Button>
