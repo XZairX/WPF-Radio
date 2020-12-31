@@ -76,7 +76,6 @@ namespace WPFRadio
 
         private void MouseButton_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            e.Handled = true;
             Button button = (Button)sender;
             string content = button.Content.ToString();
             switch (content.ToUpper())
