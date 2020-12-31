@@ -21,29 +21,29 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Button x:Name="ButtonPrevious" Grid.Row="3" Grid.Column="0" FontWeight="Bold" Click="Button_Click">PREV</Button>
-        <Button x:Name="ButtonOn" Grid.Row="3" Grid.Column="1" FontWeight="Bold" Click="Button_Click">ON</Button>
-        <Button x:Name="ButtonPlay" Grid.Row="3" Grid.Column="2" FontWeight="Bold" Click="Button_Click">PLAY</Button>
-        <Button x:Name="ButtonOff" Grid.Row="3" Grid.Column="3" FontWeight="Bold" Click="Button_Click">OFF</Button>
-        <Button x:Name="ButtonNext" Grid.Row="3" Grid.Column="5" FontWeight="Bold" Click="Button_Click">NEXT</Button>
+        <Button x:Name="ButtonPrevious" x:FieldModifier="private" Grid.Row="3" Grid.Column="0" FontWeight="Bold" Click="Button_Click">PREV</Button>
+        <Button x:Name="ButtonOn" x:FieldModifier="private" Grid.Row="3" Grid.Column="1" FontWeight="Bold" Click="Button_Click">ON</Button>
+        <Button x:Name="ButtonPlay" x:FieldModifier="private" Grid.Row="3" Grid.Column="2" FontWeight="Bold" Click="Button_Click">PLAY</Button>
+        <Button x:Name="ButtonOff" x:FieldModifier="private" Grid.Row="3" Grid.Column="3" FontWeight="Bold" Click="Button_Click">OFF</Button>
+        <Button x:Name="ButtonNext" x:FieldModifier="private" Grid.Row="3" Grid.Column="5" FontWeight="Bold" Click="Button_Click">NEXT</Button>
 
-        <Button x:Name="ButtonVolumeMin" Grid.Row="2" Grid.Column="0" FontWeight="Bold"
+        <Button x:Name="ButtonVolumeMin" x:FieldModifier="private" Grid.Row="2" Grid.Column="0" FontWeight="Bold"
                 MouseDoubleClick="MouseButton_DoubleClick" Content="VOL&#xa;MIN"></Button>
-        <RepeatButton x:Name="ButtonVolumeDown" Grid.Row="2" Grid.Column="1" FontWeight="Bold"
+        <RepeatButton x:Name="ButtonVolumeDown" x:FieldModifier="private" Grid.Row="2" Grid.Column="1" FontWeight="Bold"
                       Delay="200" Interval="20" Click="RepeatButton_Click">VOL -</RepeatButton>
-        <Button x:Name="ButtonVolumeMute" Grid.Row="2" Grid.Column="2" FontWeight="Bold" Click="Button_Click">MUTE</Button>
-        <RepeatButton x:Name="ButtonVolumeUp" Grid.Row="2" Grid.Column="3" FontWeight="Bold"
+        <Button x:Name="ButtonVolumeMute" x:FieldModifier="private" Grid.Row="2" Grid.Column="2" FontWeight="Bold" Click="Button_Click">MUTE</Button>
+        <RepeatButton x:Name="ButtonVolumeUp" x:FieldModifier="private" Grid.Row="2" Grid.Column="3" FontWeight="Bold"
                       Delay="200" Interval="20" Click="RepeatButton_Click">VOL +</RepeatButton>
-        <Button x:Name="ButtonVolumeMax" Grid.Row="2" Grid.Column="4" FontWeight="Bold"
+        <Button x:Name="ButtonVolumeMax" x:FieldModifier="private" Grid.Row="2" Grid.Column="4" FontWeight="Bold"
                 MouseDoubleClick="MouseButton_DoubleClick" Content="VOL&#xa;MAX"></Button>
 
-        <Button x:Name="ButtonChannel1" Grid.Row="1" Grid.Column="0" FontWeight="ExtraBlack" Click="Button_Click">1</Button>
-        <Button x:Name="ButtonChannel2" Grid.Row="1" Grid.Column="1" FontWeight="ExtraBold" Click="Button_Click">2</Button>
-        <Button x:Name="ButtonChannel3" Grid.Row="1" Grid.Column="2" FontWeight="ExtraBold" Click="Button_Click">3</Button>
-        <Button x:Name="ButtonChannel4" Grid.Row="1" Grid.Column="3" FontWeight="ExtraBold" Click="Button_Click">4</Button>
-        <Button x:Name="ButtonChannelShuffle" Grid.Row="1" Grid.Column="4" FontWeight="Bold" Click="Button_Click" >SHUFFLE</Button>
+        <Button x:Name="ButtonChannel1" x:FieldModifier="private" Grid.Row="1" Grid.Column="0" FontWeight="ExtraBlack" Click="Button_Click">1</Button>
+        <Button x:Name="ButtonChannel2" x:FieldModifier="private" Grid.Row="1" Grid.Column="1" FontWeight="ExtraBold" Click="Button_Click">2</Button>
+        <Button x:Name="ButtonChannel3" x:FieldModifier="private" Grid.Row="1" Grid.Column="2" FontWeight="ExtraBold" Click="Button_Click">3</Button>
+        <Button x:Name="ButtonChannel4" x:FieldModifier="private" Grid.Row="1" Grid.Column="3" FontWeight="ExtraBold" Click="Button_Click">4</Button>
+        <Button x:Name="ButtonChannelShuffle" x:FieldModifier="private" Grid.Row="1" Grid.Column="4" FontWeight="Bold" Click="Button_Click" >SHUFFLE</Button>
 
-        <TextBox x:Name="TextOutput" IsReadOnly="true"
+        <TextBox x:Name="TextOutput" x:FieldModifier="private" IsReadOnly="true"
                  TextAlignment="right" VerticalAlignment="Bottom"
                  FontSize="20" BorderThickness="0"
                  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Margin="10,0,10,10">Text</TextBox>
