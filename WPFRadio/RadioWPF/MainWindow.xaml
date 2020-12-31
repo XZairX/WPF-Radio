@@ -64,15 +64,30 @@
                 Grid.Row="2" Grid.Column="4" FontWeight="Bold"
                 MouseDoubleClick="MouseButton_DoubleClick" Content="VOL&#xa;MAX"></Button>
 
-        <Button x:Name="ButtonChannel1" x:FieldModifier="private" Grid.Row="1" Grid.Column="0" FontWeight="ExtraBlack" Click="Button_Click">1</Button>
-        <Button x:Name="ButtonChannel2" x:FieldModifier="private" Grid.Row="1" Grid.Column="1" FontWeight="ExtraBold" Click="Button_Click">2</Button>
-        <Button x:Name="ButtonChannel3" x:FieldModifier="private" Grid.Row="1" Grid.Column="2" FontWeight="ExtraBold" Click="Button_Click">3</Button>
-        <Button x:Name="ButtonChannel4" x:FieldModifier="private" Grid.Row="1" Grid.Column="3" FontWeight="ExtraBold" Click="Button_Click">4</Button>
-        <Button x:Name="ButtonChannelShuffle" x:FieldModifier="private" Grid.Row="1" Grid.Column="4" FontWeight="Bold" Click="Button_Click" >SHUFFLE</Button>
+        <Button x:Name="ButtonChannel1" x:FieldModifier="private"
+                Grid.Row="1" Grid.Column="0" FontWeight="ExtraBlack"
+                Click="Button_Click">1</Button>
+        
+        <Button x:Name="ButtonChannel2" x:FieldModifier="private"
+                Grid.Row="1" Grid.Column="1" FontWeight="ExtraBold"
+                Click="Button_Click">2</Button>
+        
+        <Button x:Name="ButtonChannel3" x:FieldModifier="private"
+                Grid.Row="1" Grid.Column="2" FontWeight="ExtraBold"
+                Click="Button_Click">3</Button>
+        
+        <Button x:Name="ButtonChannel4" x:FieldModifier="private"
+                Grid.Row="1" Grid.Column="3" FontWeight="ExtraBold"
+                Click="Button_Click">4</Button>
+        
+        <Button x:Name="ButtonChannelShuffle" x:FieldModifier="private"
+                Grid.Row="1" Grid.Column="4" FontWeight="Bold"
+                Click="Button_Click" >SHUFFLE</Button>
 
         <TextBox x:Name="TextOutput" x:FieldModifier="private" IsReadOnly="true"
                  TextAlignment="right" VerticalAlignment="Bottom"
                  FontSize="20" BorderThickness="0"
-                 Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Margin="10,0,10,10">Text</TextBox>
+                 Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"
+                 Margin="10,0,10,10">Text</TextBox>
     </Grid>
 </Window>
