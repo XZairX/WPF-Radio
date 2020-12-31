@@ -42,14 +42,26 @@
                 Grid.Row="3" Grid.Column="5" FontWeight="Bold"
                 Click="Button_Click">NEXT</Button>
 
-        <Button x:Name="ButtonVolumeMin" x:FieldModifier="private" Grid.Row="2" Grid.Column="0" FontWeight="Bold"
+        <Button x:Name="ButtonVolumeMin" x:FieldModifier="private"
+                Grid.Row="2" Grid.Column="0" FontWeight="Bold"
                 MouseDoubleClick="MouseButton_DoubleClick" Content="VOL&#xa;MIN"></Button>
-        <RepeatButton x:Name="ButtonVolumeDown" x:FieldModifier="private" Grid.Row="2" Grid.Column="1" FontWeight="Bold"
-                      Delay="200" Interval="20" Click="RepeatButton_Click">VOL -</RepeatButton>
-        <Button x:Name="ButtonVolumeMute" x:FieldModifier="private" Grid.Row="2" Grid.Column="2" FontWeight="Bold" Click="Button_Click">MUTE</Button>
-        <RepeatButton x:Name="ButtonVolumeUp" x:FieldModifier="private" Grid.Row="2" Grid.Column="3" FontWeight="Bold"
-                      Delay="200" Interval="20" Click="RepeatButton_Click">VOL +</RepeatButton>
-        <Button x:Name="ButtonVolumeMax" x:FieldModifier="private" Grid.Row="2" Grid.Column="4" FontWeight="Bold"
+        
+        <RepeatButton x:Name="ButtonVolumeDown" x:FieldModifier="private"
+                      Grid.Row="2" Grid.Column="1" FontWeight="Bold"
+                      Delay="200" Interval="20"
+                      Click="RepeatButton_Click">VOL -</RepeatButton>
+        
+        <Button x:Name="ButtonVolumeMute" x:FieldModifier="private"
+                Grid.Row="2" Grid.Column="2" FontWeight="Bold"
+                Click="Button_Click">MUTE</Button>
+        
+        <RepeatButton x:Name="ButtonVolumeUp" x:FieldModifier="private"
+                      Grid.Row="2" Grid.Column="3" FontWeight="Bold"
+                      Delay="200" Interval="20"
+                      Click="RepeatButton_Click">VOL +</RepeatButton>
+        
+        <Button x:Name="ButtonVolumeMax" x:FieldModifier="private"
+                Grid.Row="2" Grid.Column="4" FontWeight="Bold"
                 MouseDoubleClick="MouseButton_DoubleClick" Content="VOL&#xa;MAX"></Button>
 
         <Button x:Name="ButtonChannel1" x:FieldModifier="private" Grid.Row="1" Grid.Column="0" FontWeight="ExtraBlack" Click="Button_Click">1</Button>
