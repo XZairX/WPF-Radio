@@ -25,7 +25,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void Channel_HasDefaultValueOf1()
+        public void Channel_DefaultValue_Is1()
         {
             var radio = new Radio();
 

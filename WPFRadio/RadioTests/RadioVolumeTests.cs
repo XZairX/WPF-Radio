@@ -25,7 +25,7 @@ namespace RadioTests
         }
 
         [Test]
-        public void Volume_HasDefaultValueOf50()
+        public void Volume_DefaultValue_Is50()
         {
             var radio = new Radio();
 
