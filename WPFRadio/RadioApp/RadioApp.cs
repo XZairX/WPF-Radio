@@ -58,77 +58,6 @@ namespace RadioApp
             return _isOn ? $"Playing channel {_channel}" : "Radio is off";
         }
         
-        public void Mute()
-        {
-            if (_isMuted)
-            {
-                UnMute();
-            }
-            else
-            {
-                _savedVolume = Volume;
-                Volume = 0;
-                _isMuted = true;
-            }
-        }
-
-        private void UnMute()
-        {
-            if (_isOn)
-            {
-                Volume = _savedVolume;
-                _isMuted = false;
-            }
-        }
-
-        public void VolumeDown()
-        {
-            if (_isMuted)
-            {
-                UnMute();
-            }
-            else
-            {
-                Volume--;
-            }
-        }
-
-        public void VolumeUp()
-        {
-            if (_isMuted)
-            {
-                UnMute();
-            }
-            else
-            {
-                Volume++;
-            }   
-        }
-
-        public void VolumeMin()
-        {
-            if (_isMuted)
-            {
-                UnMute();
-            }
-            else
-            {
-                Volume = _minVolume;
-            }
-        }
-
-        public void VolumeMax()
-        {
-            if (_isMuted)
-            {
-                UnMute();
-            }
-            else
-            {
-                Volume = _maxVolume;
-            }
-        }
-        
         public bool ToggleShuffle()
         {
             if (_isOn)
@@ -177,6 +106,77 @@ namespace RadioApp
                 }
             }
             return Channel;
+        }
+
+        public void Mute()
+        {
+            if (_isMuted)
+            {
+                UnMute();
+            }
+            else
+            {
+                _savedVolume = Volume;
+                Volume = 0;
+                _isMuted = true;
+            }
+        }
+
+        private void UnMute()
+        {
+            if (_isOn)
+            {
+                Volume = _savedVolume;
+                _isMuted = false;
+            }
+        }
+
+        public void VolumeDown()
+        {
+            if (_isMuted)
+            {
+                UnMute();
+            }
+            else
+            {
+                Volume--;
+            }
+        }
+
+        public void VolumeUp()
+        {
+            if (_isMuted)
+            {
+                UnMute();
+            }
+            else
+            {
+                Volume++;
+            }
+        }
+
+        public void VolumeMin()
+        {
+            if (_isMuted)
+            {
+                UnMute();
+            }
+            else
+            {
+                Volume = _minVolume;
+            }
+        }
+
+        public void VolumeMax()
+        {
+            if (_isMuted)
+            {
+                UnMute();
+            }
+            else
+            {
+                Volume = _maxVolume;
+            }
         }
     }
 }
