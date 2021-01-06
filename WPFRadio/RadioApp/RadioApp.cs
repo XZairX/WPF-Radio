@@ -4,7 +4,21 @@ namespace RadioApp
 {
     public class Radio
     {
+        private const int _minChannel = 1;
+        private const int _maxChannel = 4;
+        private const int _minVolume = 0;
+        private const int _maxVolume = 100;
+
+        private readonly Random _random = new Random();
+
         private int _channel = 1;
+        private int _volume = 50;
+        private int _savedVolume;
+
+        private bool _isOn;
+        private bool _isMuted;
+        private bool _canShuffle;
+
         public int Channel
         {
             get => _channel;
@@ -20,7 +34,6 @@ namespace RadioApp
             }
         }
 
-        private int _volume = 50;
         public int Volume
         {
             get => _volume;
@@ -35,19 +48,6 @@ namespace RadioApp
                 }
             }
         }
-
-        private const int _minChannel = 1;
-        private const int _maxChannel = 4;
-        private const int _minVolume = 0;
-        private const int _maxVolume = 100;
-
-        private readonly Random _random = new Random();
-
-        private int _savedVolume;
-
-        private bool _isOn;
-        private bool _isMuted;
-        private bool _canShuffle;
 
         public void TurnOff() => _isOn = false;
 
